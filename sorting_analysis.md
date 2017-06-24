@@ -13,6 +13,7 @@ Given you have an unsorted array of integers written in the form `a[0] a[1] a[2]
 There is a quick and a slow direction. This is a very distinctive feature as you see (one runthrough from left to right):
 
 `23 88 64 32 11`
+
 `23 64 32 11 88`
 
 The direction in which you run along is the fast direction. The biggest/smallest number (88) is guaranteed to show up (bubble up) at the very end after only 1 runthrough.
@@ -39,25 +40,28 @@ With insertion sort, there is a sorted and a unsorted part of the array. Startin
 `[sorted part] unsorted part` :
 
 `[7] 3 5 83 25 33`
+
 `[3 7] 5 83 25 33`
-`[3 5 7] 83 25 33`            
+
+`[3 5 7] 83 25 33`
+
 `[3 5 7 83] 25 33`
 
 **Signs of insertion sort**
 
-One part of the array (either growing from left or right) is sorted, while the other one is in its initial state and not changed.
+One part of the array (either growing from left or right) is sorted, while the other one is either
+
+(1) in its initial state and not changed (not using a heap), or
+
+(2)representing a heap. The heap would have the smallest value at its first position, and then values "vaguely" sorted (look up the heap representation in an array for more info).
 
 **Signs of not insertion sort**
 
-Not the above: If there is no clear section sorted and one section unsorted.
+If there is no section that is clearly sorted (this has to be the case, regardless of how the unsorted part is structured).
 
 **Smallest data structure to be used**
 
-There are two approaches, in both cases the original array is sufficient:
-
-One is to just iterate through the unordered part for every `n`, leading to `O(n²)`.
-
-Another way is to organize the unordered part as a heap (heaps can be represented as arrays), right next to the sorted part of the array. The sorted part and the heap wouldn't interfere, since every expansion of the sorted part makes the heap smaller. Using the heaps' `removeMin()` would result in `O(n * log(n))` (one heap restructuring/down bubbling for every of the n `removeMin()`).
+Regardless of a heap is used to organize the unsorted pool (O(n * log(n))) or not (O(n²)), the original array is sufficient, since the heap doesn't take any more space than the unsorted values would do otherwise.
 
 ### Selection sort
 **Distinctive features**
