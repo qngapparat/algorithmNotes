@@ -32,7 +32,6 @@ Scout for the biggest and the smallest value. If they are both somewhere in betw
 The original array is sufficient.
 
 ### Insertion sort
-
 **Distinct features**
 
 With insertion sort, there is a sorted and a unsorted part of the array. Starting at a[0] (one value is always sorted), the next right value in the array is then inserted at the right point in the sorted part of the array. The important part here is that from one end of the array, a sorted part "grows" by 1 each time, forcing the unsorted part back:
@@ -44,7 +43,6 @@ With insertion sort, there is a sorted and a unsorted part of the array. Startin
 `[3 5 7] 83 25 33`            
 `[3 5 7 83] 25 33`
 
-
 **Signs of insertion sort**
 
 One part of the array (either growing from left or right) is sorted, while the other one is in its initial state and not changed.
@@ -55,9 +53,15 @@ Not the above: If there is no clear section sorted and one section unsorted.
 
 **Smallest data structure to be used**
 
-There are two approaches: one is to just iterate through the unordered part for every `n`, leading to `O(n²)`. Another way is to organize the unordered part as a heap (heaps can be represented as arrays), right next to the sorted part of the array. The sorted part and the heap wouldn't interfere, since every expansion of the sorted part makes the heap smaller. Using the heaps' `removeMin()` would result in `O(n * log(n))` (one heap restructuring/down bubbling for every of the n `removeMin()`).
+There are two approaches, in both cases the original array is sufficient:
 
-In either way, it only needs the original array space.
+One is to just iterate through the unordered part for every `n`, leading to `O(n²)`.
+
+Another way is to organize the unordered part as a heap (heaps can be represented as arrays), right next to the sorted part of the array. The sorted part and the heap wouldn't interfere, since every expansion of the sorted part makes the heap smaller. Using the heaps' `removeMin()` would result in `O(n * log(n))` (one heap restructuring/down bubbling for every of the n `removeMin()`).
+
+### Selection sort
+**Distinctive features**
+
 
 
 
